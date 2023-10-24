@@ -1,3 +1,4 @@
+require("dotenv").config(); //importacao do dotenv
 const express = require("express");
 const rotas = require("./rotas");
 

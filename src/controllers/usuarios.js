@@ -1,4 +1,3 @@
-require("dotenv").config(); //importacao do dotenv
 const bcrypt = require("bcrypt");
 const pool = require("../conexao");
 const jwt = require("jsonwebtoken");
@@ -50,10 +49,9 @@ const login = async (req, res) => {
       return res.status(400).json({ mensagem: "Email ou senha inválida" });
     }
 
-    const senhaJwt = process.env.TESTE; //senha capturada do dotenv
-    //criação do token e assinatura
+    const senhaJwt = process.env.TESTE;
+
     const token = jwt.sign({ id: usuario.id }, senhaJwt, { expiresIn: "8h" });
-    console.log(token);
 
     return res.json({ usuario, token });
   } catch (error) {
